@@ -1,0 +1,6 @@
+## Interface: 11200
+## Title: GetSpellInfoVanilla
+## Author: Schaka
+## SavedVariables: GetSpellInfoDB
+GetSpellInfoVanilla.xml
+spells.lua
