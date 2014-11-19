@@ -19,7 +19,7 @@ function GetSpellInfoVanilla:UNIT_AURA(unit)
 	log(arg1)
 end
 
-function GetSpellInfoVanilla(id)
+function GetSpellInfoById(id)
 	local name, rank, icon, cost, isFunnel, powerType
 	name = GetSpellInfoVanillaDB["spells"][id]["name"]
 	rank = GetSpellInfoVanillaDB["spells"][id]["rank"]
