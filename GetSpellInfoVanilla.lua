@@ -100,7 +100,7 @@ function GetSpellInfoByIconAndName(Icon, Name)
 	return resultArray
 end
 
-function GPIV_Test()
+function GSIV_Test()
 	local buffTexture, buffApplications = UnitBuff("target", 1);
 	local tempTable = GetSpellInfoByIcon(buffTexture)
 	for k,v in pairs(tempTable) do
