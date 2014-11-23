@@ -19,7 +19,7 @@ function GetSpellInfoVanilla:UNIT_AURA(unit)
 	log(arg1)
 end
 
-function GetSpellInfoVanilla(id)
+function GetSpellInfoById(id)
 	local name, rank, icon, cost, isFunnel, powerType
 	name = GetSpellInfoVanillaDB["spells"][id]["name"]
 	rank = GetSpellInfoVanillaDB["spells"][id]["rank"]
@@ -100,7 +100,7 @@ function GetSpellInfoByIconAndName(Icon, Name)
 	return resultArray
 end
 
-function GPIV_Test()
+function GSIV_Test()
 	local buffTexture, buffApplications = UnitBuff("target", 1);
 	local tempTable = GetSpellInfoByIcon(buffTexture)
 	for k,v in pairs(tempTable) do
