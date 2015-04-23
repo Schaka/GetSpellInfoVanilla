@@ -2,10 +2,9 @@ local function log(msg) DEFAULT_CHAT_FRAME:AddMessage(msg) end -- alias for conv
 local GetSpellInfoVanilla = CreateFrame("Frame", nil, UIParent, "ActionButtonTemplate")
 
 GetSpellInfoVanilla.OnEvent = function() -- functions created in "object:method"-style have an implicit first parameter of "this", which points to object || in 1.12 parsing arguments as ... doesn't work
-	this[event](arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) -- route event parameters to GetSpellInfoVanilla:event methods
+	this[event](GetSpellInfoVanilla, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10) -- route event parameters to GetSpellInfoVanilla:event methods
 end
 GetSpellInfoVanilla:SetScript("OnEvent", GetSpellInfoVanilla.OnEvent)
-GetSpellInfoVanilla:RegisterEvent("UNIT_AURA")
 GetSpellInfoVanilla:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 function GetSpellInfoVanilla_OnUpdate(elapsed)
@@ -15,11 +14,7 @@ function GetSpellInfoVanilla:PLAYER_ENTERING_WORLD()
 
 end
 
-function GetSpellInfoVanilla:UNIT_AURA(unit)
-	log(arg1)
-end
-
-function GetSpellInfoVanilla(id)
+function GetSpellInfoById(id)
 	local name, rank, icon, cost, isFunnel, powerType
 	name = GetSpellInfoVanillaDB["spells"][id]["name"]
 	rank = GetSpellInfoVanillaDB["spells"][id]["rank"]
@@ -100,7 +95,7 @@ function GetSpellInfoByIconAndName(Icon, Name)
 	return resultArray
 end
 
-function GPIV_Test()
+function GSIV_Test()
 	local buffTexture, buffApplications = UnitBuff("target", 1);
 	local tempTable = GetSpellInfoByIcon(buffTexture)
 	for k,v in pairs(tempTable) do
